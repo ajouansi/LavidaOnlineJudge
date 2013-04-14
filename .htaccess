@@ -1,0 +1,28 @@
+AddDefaultCharset UTF-8
+RewriteEngine On
+RewriteCond %{REQUEST_URI}	!^/$
+RewriteRule ^([a-zA-Z_-]+)$ /index.php?mode=$1 [QSA,L]
+RewriteRule ^([a-zA-Z_-]+)/$ /index.php?mode=$1	[QSA,L]
+RewriteRule ^profile/([a-zA-Z0-9_-]+)$ /index.php?mode=profile&user=$1 [L]
+RewriteRule ^problem/([0-9]+)$	/index.php?mode=problem&pn=$1 [L]
+RewriteRule ^problemset/([0-9]+)$ /index.php?mode=problemset&page=$1 [QSA,L]
+RewriteRule ^source/([0-9]+)$ /index.php?mode=source&rid=$1 [L]
+RewriteRule ^activate/([a-zA-Z0-9_-]+)$ /index.php?mode=activate&code=$1 [L]
+RewriteRule ^hof/([0-9]+)$ /index.php?mode=problemstatus&pn=$1 [L]
+RewriteRule ^([0-9]+)$ /problem/$1 [R]
+RewriteRule ^status/([0-9]+)$ /index.php?mode=status&problem_id=$1&pflag=y
+RewriteRule ^settings/([a-zA-Z0-9_-]+)$ /index.php?mode=settings&page=$1 [L]
+RewriteRule ^collection/([0-9]+)$ /index.php?mode=collection&col_id=$1 [L]
+RewriteRule ^collections/([a-zA-Z0-9_-]+)$ /index.php?mode=collections&show=$1 [L]
+php_value auto_prepend_file /home/judge/www/magic.php
+
+<Files schema.sql>
+	Order allow,deny
+	Deny from all
+</Files>
+#AuthName	'beta'
+#AuthType	Basic
+#AuthUserFile	/home/beta/www/.htpasswd
+#<Limit GET>
+#require valid-user
+#</Limit>
