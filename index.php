@@ -116,7 +116,7 @@
 	{
 ?>
 									<li><a hrefa="/admin/">Admin</a></li>
-									<li class="divider"></li>
+								<li class="divider"></li>
 <?
 	}
 ?>
@@ -169,7 +169,14 @@ if( strlen($msg) > 4 )
 			<hr/>
 
 			<footer>
-				<p>&copy; lavida.us 2008-2013 <a href="mailto:flrngel@gmail.com">Hwe-chul Cho</a>, <a href="mailto:libe.ajou.ac.kr">Hyun-hwan Jeong</a></p>
+				<div class="row-fluid">
+					<div class="span6">
+						<a href="https://github.com/flrngel/LavidaOnlineJudge.git" target="_blank"><img src="/image/github.png"></a>
+					</div>
+				</div>
+				<div class="row-fluid" style="margin-top:5px">
+					<p>&copy; lavida.us 2008-2013 <a href="mailto:flrngel@gmail.com">Hwe-chul Cho</a>, <a href="mailto:libe.ajou.ac.kr">Hyun-hwan Jeong</a></p>
+				</div>
 			</footer>
 
 		</div> <!-- /container -->
