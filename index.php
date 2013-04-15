@@ -170,12 +170,14 @@ if( strlen($msg) > 4 )
 
 			<footer>
 				<div class="row-fluid">
-					<div class="span6">
+					<center>
 						<a href="https://github.com/flrngel/LavidaOnlineJudge.git" target="_blank"><img src="/image/github.png"></a>
-					</div>
+					</center>
 				</div>
-				<div class="row-fluid" style="margin-top:5px">
-					<p>&copy; lavida.us 2008-2013 <a href="mailto:flrngel@gmail.com">Hwe-chul Cho</a>, <a href="mailto:libe.ajou.ac.kr">Hyun-hwan Jeong</a></p>
+				<div class="row-fluid" style="margin-top:10px">
+					<center>
+						<p>&copy; lavida.us 2008-2013 <a href="mailto:flrngel@gmail.com">Hwe-chul Cho</a>, <a href="mailto:libe.ajou.ac.kr">Hyun-hwan Jeong</a></p>
+					</center>
 				</div>
 			</footer>
 
