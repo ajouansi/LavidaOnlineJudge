@@ -1,5 +1,4 @@
 <?
-	require_once("../include/db_info.inc.php");
 	$sql="select distinct `user_id` from `activation`";
 	$tmp=@mysql_query($sql);
 	$cnt=0;
