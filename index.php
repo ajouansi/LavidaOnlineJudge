@@ -115,7 +115,7 @@
 	if(isset($_SESSION['administrator']))
 	{
 ?>
-									<li><a hrefa="/admin/">Admin</a></li>
+									<li><a href="/admin/">Admin</a></li>
 								<li class="divider"></li>
 <?
 	}
