@@ -33,6 +33,7 @@
 	{
 ?>
 		<div class="pull-right">
+			<a href="/status/?pflag=n&problem_id=&user=<?=$user?>&jresult=">[Status]</a>
 			<a href="/dual/?user1=<?=$_SESSION['user_id']?>&user2=<?=$user?>">[Dual]</a>
 		</div>
 <?
