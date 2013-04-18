@@ -159,14 +159,10 @@ DROP TABLE IF EXISTS `news`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `news` (
   `news_id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` varchar(20) NOT NULL DEFAULT '',
-  `title` varchar(200) NOT NULL DEFAULT '',
-  `content` text NOT NULL,
+  `comment` text NOT NULL,
   `time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `importance` tinyint(4) NOT NULL DEFAULT '0',
-  `defunct` char(1) NOT NULL DEFAULT 'N',
   PRIMARY KEY (`news_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=1005 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -308,7 +304,7 @@ CREATE TABLE `solution` (
   KEY `pid` (`problem_id`),
   KEY `res` (`result`),
   KEY `cid` (`contest_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=123139 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=123768 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -380,4 +376,4 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-04-14 16:05:49
+-- Dump completed on 2013-04-18 11:12:00

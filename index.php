@@ -28,6 +28,7 @@
 		else if($_GET['mode']=='problemstatus'){$now_page.="problemstatus.php"; $active_menu[2]="active";}
 		else if($_GET['mode']=='dual'){$now_page.="dual.php";}
 		else if($_GET['mode']=='collection'){$now_page.="collection.php"; $active_menu[3]="active";}
+		else if($_GET['mode']=='news'){$now_page.="news.php";}
 	}
 	else
 		$now_page.="main.php";

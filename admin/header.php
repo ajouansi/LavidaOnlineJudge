@@ -72,7 +72,7 @@
     <div class="container-narrow">
 
       <div class="masthead">
-        <h3 class="muted">Lavida Online Judge Admin</h3>
+        <h3 class="muted"><a href="/admin/">Lavida Online Judge - Admin</a></h3>
 	  </div>
 	  <div class="row-fluid">
         <ul class="nav nav-pills pull-right">
