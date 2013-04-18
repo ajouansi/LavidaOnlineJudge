@@ -77,7 +77,6 @@
 	  <div class="row-fluid">
         <ul class="nav nav-pills pull-right">
           <li><a href="/admin">Home</a></li>
-          <li><a href="/admin/add_news.php">News</a></li>
         </ul>
       </div>
       <hr>
