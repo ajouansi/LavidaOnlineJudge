@@ -33,7 +33,7 @@
 ?>
 		<tr style="font-size:10pt">
 			<td><?=$i?></td>
-			<td><?=$res->user_id?></td>
+			<td><a href="/profile/<?=$res->user_id?>"><?=$res->user_id?></a></td>
 			<td><a href="/collection/<?=$res->col_id?>"><?=$res->title?></a></td>
 			<td><?=$res->cnt?></td>
 			<td><?=$label?></td>
