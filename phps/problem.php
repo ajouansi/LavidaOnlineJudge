@@ -10,11 +10,14 @@
 	}
 
 	$pn=$_GET['pn'];
-	$sql="select count(*) from `problem` where `problem_id`='$pn'";
+	$sql="select count(*) from `problem` where `problem_id`='$pn' and `defunct`='N'";
 	$tmp=@mysql_query($sql);
 	$res=@mysql_fetch_row($tmp);
 	$avail=$res[0];
 	if( $avail < 1 ) exit("<span>No Such Problem!</span>");
+
+	if( $pn > 2079 ) exit("<span>No Such Problem!</span>");
+
 
 	$sql="select * from `problem` where `problem_id`='$pn'";
 	$tmp=@mysql_query($sql);

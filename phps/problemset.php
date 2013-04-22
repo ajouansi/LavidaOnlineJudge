@@ -84,6 +84,8 @@
 			else $info_text.="<span class='label label-important'>FAIL</span> ";
 		}	
 		if( $res->spj == 1 ) $info_text.="<span class='label label-info'>SPJ</span> ";
+
+		if ( $res->problem_id > 2079 ) continue; // 임시 코드
 ?>
 		<tr>
 			<td><?=$res->problem_id?></td>
