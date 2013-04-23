@@ -1,11 +1,12 @@
 <?
 	if(defined('__FROM_INDEX__')==false) exit;
+	if( !isset($_SESSION['user_id']) ) exit;
 	if( isset($_POST['send']) )
 	{
 		if( $_POST['lavida_pw'] != $_POST['lavida_pw_confirm'] ) alertBox("<strong>Error!</strong> Confirm your password!");
 
 		$old_password = MD5($_POST['lavida_old_pw']);
-		$sql="select * from `users` where `user_id`='$_POST[lavida_id]' AND `password`='$old_password'";
+		$sql="select * from `users` where `user_id`='$_SESSION[user_id]' AND `password`='$old_password'";
 		$tmp=@mysql_query($sql);
 		$rows=@mysql_num_rows($tmp);
 
@@ -15,7 +16,9 @@
 		else
 		{
 			$pw=md5($_POST['lavida_pw']);
-			$sql="UPDATE `users` SET `password` = '$pw' WHERE `user_id`='$_POST[lavida_id]';";
+			$sql="UPDATE `users` SET ";
+			if( strlen($_POST['lavida_pw'])>0 )$sql.="`password` = '$pw',";
+			$sql.="`school`='$_POST[lavida_school]' WHERE `user_id`='$_SESSION[user_id]';";
 			$tmp=@mysql_query($sql);
 			if( $tmp )
 			{
@@ -29,6 +32,9 @@
 	}
 	else
 	{
+		$sql="select * from `users` where `user_id`='$_SESSION[user_id]'";
+		$tmp=@mysql_query($sql);
+		$res=@mysql_fetch_object($tmp);
 ?>
 <form action="" method="post" class="form-horizontal" id="myform">
 	<legend>Account</legend>
@@ -36,30 +42,38 @@
 	<div class="control-group">
 		<label class="control-label" for="lavida_id">ID</label>
 		<div class="controls">
-			<input type="text" name="lavida_id" id="lavida_id" tabindex="1" readonly value='<?=$_SESSION['user_id'];?>'>
+			<input type="text" name="lavida_id" id="lavida_id" tabindex="1" disabled value='<?=$_SESSION['user_id'];?>'>
 		</div>
 	</div>
+
+	<div class="control-group">
+		<label class="control-label" for="lavida_school">School</label>
+		<div class="controls">
+			<input type="text" name="lavida_school" id="lavida_school" tabindex="2" value='<?=$res->school?>'/>
+		</div>
+	</div>
+
 	<div class="control-group">
 		<label class="control-label" for="lavida_old_pw">Old password</label>
 		<div class="controls">
-			<input type="password" name="lavida_old_pw" id="lavida_old_pw" tabindex="2">
+			<input type="password" name="lavida_old_pw" id="lavida_old_pw" tabindex="3">
 		</div>
 	</div>
 
 	<div class="control-group">
 		<label class="control-label" for="lavida_pw">New password</label>
 		<div class="controls">
-			<input type="password" name="lavida_pw" id="lavida_pw" tabindex="3">
+			<input type="password" name="lavida_pw" id="lavida_pw" tabindex="4">
 		</div>
 	</div>
 	<div class="control-group">
-		<label class="control-label" for="lavida_pw_confirm">Confirm</label>
+		<label class="control-label" for="lavida_pw_confirm">Password confirm</label>
 		<div class="controls">
-			<input type="password" name="lavida_pw_confirm" id="lavida_pw_confirm" tabindex="4">
+			<input type="password" name="lavida_pw_confirm" id="lavida_pw_confirm" tabindex="5">
 		</div>
 	</div>
 	<div class="form-actions">
-		<button type="submit" class="btn btn-primary btn-large" id="register" tabindex="5">Update!</button>
+		<button type="submit" class="btn btn-primary btn-large" id="register" tabindex="6">Update!</button>
 	</div>
 </form>
 <script>
@@ -71,11 +85,11 @@
 					minlength: 4
 				},
 				lavida_pw: {
-					required: true,
+					required: false,
 					minlength: 4
 				},
 				lavida_pw_confirm: {
-					required: true,
+					required: false,
 					minlength: 4,
 					equalTo: "#lavida_pw"
 				},
@@ -98,7 +112,7 @@
 				lavida_pw_confirm: {
 					required: "Please input your new password confirm",
 					minlength: "Length has to be more than 4",
-					equalTo: "Password does not match"
+					equalTo: "Password does not match",
 				},
 			},
 			errorPlacement: function(error, element){
