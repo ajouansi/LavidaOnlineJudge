@@ -18,5 +18,6 @@ Installation
 
 git clone https://github.com/flrngel/LavidaOnlineJudge.git
 cd LavidaOnlineJudge
+mysql -u[USER] -p[PASSWORD] < schema.sql
 git submodule init
 git submodule update
