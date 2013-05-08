@@ -1,9 +1,9 @@
 [submodule "codemirror"]
 	path = codemirror
-	url = ./codemirror/.git
+	url = http://marijnhaverbeke.nl/git/codemirror
 [submodule "gritter"]
 	path = gritter
-	url = ./gritter/.git
+	url = https://github.com/jboesch/Gritter.git
 [submodule "highlight"]
 	path = highlight
-	url = ./highlight/.git
+	url = https://github.com/alexgorbatchev/SyntaxHighlighter.git
