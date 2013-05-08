@@ -1,0 +1,9 @@
+[submodule "codemirror"]
+	path = codemirror
+	url = ./codemirror/.git
+[submodule "gritter"]
+	path = gritter
+	url = ./gritter/.git
+[submodule "highlight"]
+	path = highlight
+	url = ./highlight/.git
