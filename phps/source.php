@@ -12,6 +12,7 @@
 ?>
 <link href='/highlight/styles/shCore.css' rel='stylesheet' type='text/css'/> 
 <link href='/highlight/styles/shThemeDefault.css' rel='stylesheet' type='text/css'/> 
+<script src="/highlight/scripts/XRegExp.js" type='text/javascript'></script>
 <script src='/highlight/scripts/shCore.js' type='text/javascript'></script> 
 <script src='/highlight/scripts/shBrushCpp.js' type='text/javascript'></script> 
 <script src='/highlight/scripts/shBrushCSharp.js' type='text/javascript'></script> 
