@@ -16,12 +16,12 @@ Please join in!
 Installation
 =================
 
-git clone https://github.com/flrngel/LavidaOnlineJudge.git
+$ git clone https://github.com/flrngel/LavidaOnlineJudge.git
 
-cd LavidaOnlineJudge
+$ cd LavidaOnlineJudge
 
-mysql -u[USER] -p[PASSWORD] < schema.sql
+$ mysql -u[USER] -p[PASSWORD] < schema.sql
 
-git submodule init
+$ git submodule init
 
-git submodule update
+$ git submodule update
