@@ -1,7 +1,7 @@
 <?
 	if(defined('__FROM_INDEX__')==false) exit;
 	$sql="select `solved`,`user_id` from `users` order by `solved` DESC, `submit` ASC limit 0,100";
-	$tmp=mysql_query($sql);
+	$tmp=@mysql_query($sql);
 	$i=0;
 	$me_showed=false;
 ?>

@@ -21,6 +21,9 @@
 	ksort($solved_problem);
 	$accept_count=count($solved_problem);
 
+	$sql="update users set `solved`='$accetp_count',`submit`='$submit_count' where `user_id`='$user'";
+	$tmp=@mysql_query($sql);
+
 	$sql="select * from users where user_id='$user'";
 	$tmp=@mysql_query($sql);
 	$res=@mysql_fetch_object($tmp);
