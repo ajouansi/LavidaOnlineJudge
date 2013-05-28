@@ -111,7 +111,7 @@
 <style>
 	#submit {
 		width: 900px; /* SET THE WIDTH OF THE MODAL */
-		margin: -250px 0 0 -450px; /* CHANGE MARGINS TO ACCOMODATE THE NEW WIDTH (original = margin: -250px 0 0 -280px;) */
+		margin: 0 0 0 -450px; /* CHANGE MARGINS TO ACCOMODATE THE NEW WIDTH (original = margin: -250px 0 0 -280px;) */
 	}
 </style>
 <div id="submit" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="submitModal" aria-hidden="true">
