@@ -10,6 +10,7 @@
 		<li class="<?=$active[1]?>"><a href="/collections/unofficial">Unofficial</a></li>
 	</ul>
 </div>
+<?if(isset($_SESSION['user_id'])){?><a href="/settings/collections" class="pull-right" style="margin-bottom:5px;margin-right:10px;"><i class="icon-wrench"></i></a><?}?>
 <table class="table table-striped table-hover table-bordered">
 	<thead>
 		<tr style="font-size:11pt">
