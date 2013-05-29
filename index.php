@@ -96,7 +96,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</a>
-					<a class="brand" href="/">Lavida Online Judge</a>
+					<a class="brand" href="/"><strong style="color:#e7e7e7">Lavida Online Judge</strong></a>
 					<div class="nav-collapse collapse">
 						<ul class="nav">
 							<li class="<?=$active_menu[1];?>"><a href="/status">Status</a></li>
