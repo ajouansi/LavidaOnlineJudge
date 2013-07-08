@@ -29,6 +29,7 @@
 		else if($_GET['mode']=='dual'){$now_page.="dual.php";}
 		else if($_GET['mode']=='collection'){$now_page.="collection.php"; $active_menu[3]="active";}
 		else if($_GET['mode']=='news'){$now_page.="news.php";}
+		else if($_GET['mode']=='contributers'){$now_page.="contributers.php";}
 	}
 	else
 		$now_page.="main.php";
@@ -181,7 +182,7 @@ if( strlen($msg) > 4 )
 
 			<hr/>
 
-			<footer>
+			<!--footer-->
 				<div class="row-fluid">
 					<center>
 						<a href="https://github.com/flrngel/LavidaOnlineJudge.git" target="_blank"><img src="/image/github.png"></a>
@@ -189,10 +190,10 @@ if( strlen($msg) > 4 )
 				</div>
 				<div class="row-fluid" style="margin-top:10px">
 					<center>
-						<p>&copy; lavida.us 2008-2013 <a href="mailto:flrngel@gmail.com">Hwe-chul Cho</a>, <a href="mailto:libe.ajou.ac.kr">Hyun-hwan Jeong</a></p>
+						<p><a href="/contributers">&copy;</a> lavida.us 2008-2013 <a href="mailto:flrngel@gmail.com">Hwe-chul Cho</a>, <a href="mailto:libe.ajou.ac.kr">Hyun-hwan Jeong</a></p>
 					</center>
 				</div>
-			</footer>
+			<!--/footer-->
 
 		</div> <!-- /container -->
 
