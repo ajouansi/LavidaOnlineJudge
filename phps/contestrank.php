@@ -256,7 +256,7 @@ $rank=1;
 ?>
 <center>
 <h3>Contest RankList -- <?php echo $title?></h3>
-<table id=rank class="table table-bordered">
+<table id=rank class="table table-bordered table-striped table-hover">
 <thead><tr class=toprow align=center><td width=5%>Rank<th width=10%>User<th width=5%>Solved<th width=5%>Penalty
 <?php
 for ($i=0;$i<$pid_cnt;$i++)
@@ -283,73 +283,28 @@ for ($i=0;$i<$user_cnt;$i++){
 		$AC = 0;
                 if(isset($U[$i])){
                         if (isset($U[$i]->p_ac_sec[$j])&&$U[$i]->p_ac_sec[$j]>0) 
-				echo "<td bgcolor=#d0e9c6>";
+							echo "<td style=\"font-weight:bold;color:#558543\">";
                         else if (isset($U[$i]->p_wa_num[$j])&&$U[$i]->p_wa_num[$j]>0) 
-                       		echo "<td bgcolor=#f2dede>";
+                       		echo "<td style=\"font-weight:bold;color:#d36969\">";
                         else 
                         	echo "<td>";
                 }
                 if(isset($U[$i])){
-                        if (isset($U[$i]->p_ac_sec[$j])&&$U[$i]->p_ac_sec[$j]>0)
-                                echo sec2str($U[$i]->p_ac_sec[$j])." ";
-                        if (isset($U[$i]->p_wa_num[$j])&&$U[$i]->p_wa_num[$j]>0) 
-				echo "(-".$U[$i]->p_wa_num[$j].")";
-		}
+                    if (isset($U[$i]->p_ac_sec[$j])&&$U[$i]->p_ac_sec[$j]>0){
+                        echo sec2str($U[$i]->p_ac_sec[$j])." ";
+						if (isset($U[$i]->p_wa_num[$j])&&$U[$i]->p_wa_num[$j]>0) {
+							echo "(-".$U[$i]->p_wa_num[$j].")";
+						}
+					}
+					else if (isset($U[$i]->p_wa_num[$j])&&$U[$i]->p_wa_num[$j]>0) {
+						echo "(-".$U[$i]->p_wa_num[$j].")";
+					}else{
+						echo "-";
+					}
+				}
         }
         echo "</tr>\n";
 }
      echo "</tbody></table>";
 ?>
 </center>
-<script>
-  function getTotal(rows){
-    var total=0;
-    for(var i=0;i<rows.length&&total==0;i++){
-      try{
-         total=parseInt(rows[rows.length-i].cells[0].innerHTML);
-          if(isNaN(total)) total=0;
-      }catch(e){
-      
-      }
-    }
-    return total;
-  
-  }
-function metal(){
-  var tb=window.document.getElementById('rank');
-  var rows=tb.rows;
-  try{
-  var total=getTotal(rows);
-  //alert(total);
-          for(var i=1;i<rows.length;i++){
-                var cell=rows[i].cells[0];
-      var acc=rows[i].cells[3];
-      var ac=parseInt(acc.innerText);
-      if (isNaN(ac)) ac=parseInt(acc.textContent);
-                
-                
-                if(cell.innerHTML!="*"&&ac>0){
-         
-                     var r=parseInt(cell.innerHTML);
-                     if(r==1){
-                       cell.innerHTML="Winner";
-                       //cell.style.cssText="background-color:gold;color:red";
-                       cell.className="badge badge-warning";
-                     }
-                     if(r>1&&r<=total*.05+1)
-                        cell.className="badge badge-warning";
-                     if(r>total*.05+1&&r<=total*.20+1)
-                        cell.className="badge";
-                     if(r>total*.20+1&&r<=total*.45+1)
-                        cell.className="badge badge-error";
-                     if(r>total*.45+1&&ac>0)
-                        cell.className="badge badge-info";
-                }
-          }
-  }catch(e){
-     //alert(e);
-  }
-}
-metal();
-</script>
-
