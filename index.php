@@ -30,6 +30,9 @@
 		else if($_GET['mode']=='collection'){$now_page.="collection.php"; $active_menu[3]="active";}
 		else if($_GET['mode']=='news'){$now_page.="news.php";}
 		else if($_GET['mode']=='contributers'){$now_page.="contributers.php";}
+		else if($_GET['mode']=='contest'){$now_page.="contest.php"; $active_menu[4]="active";}
+		else if($_GET['mode']=='contestrank'){$now_page.="contestrank.php"; $active_menu[4]="active";}
+		else if($_GET['mode']=='conteststatus'){$now_page.="conteststatus.php"; $active_menu[4]="active";}
 	}
 	else
 		$now_page.="main.php";
