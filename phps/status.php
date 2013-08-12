@@ -70,14 +70,35 @@
 	while($res=@mysql_fetch_object($tmp))
 	{
 		if(!isset($bottom)) $bottom=$res->solution_id;
+		$contesting = 0;
+		if( isset($res->contest_id) ) {
+			$sql="SELECT `end_time` from `contest` where `contest_id`=$res->contest_id";
+        	$ret=mysql_query($sql);
+        	if (mysql_num_rows($ret)==1){
+                $row=mysql_fetch_row($ret);
+                $end=strtotime($row[0]);
+                $cur=time();
+                if( $cur <= $end ) {
+                	$contesting = 1;
+                	if( $_SESSION['user_id'] == $res->user_id || isset($_SESSION['administrator']) ) $contesting = 0;
+                }
+            }
+		}
 ?>
 		<tr>
 			<td><?=$res->solution_id?></td>
 			<td><a href="/profile/<?=$res->user_id?>"><?=$res->user_id?></a></td>
 			<td><a href="/problem/<?=$res->problem_id?>"><?=$res->problem_id?></a></td>
+			<? if( $contesting == 1 )  {?> 
+			<td><b>-------</b></td>
+			<td>---- kb</td>
+			<td>---- ms</td>
+			<?} else {?>
 			<td><b class="text-<?=$judge_color[$res->result]?>"><?=$judge_result[$res->result]?></b></td>
 			<td><?=$res->memory?> kb</td>
 			<td><?=$res->time?> ms</td>
+			<?}?>
+
 <?
 		if($_SESSION['user_id']==$res->user_id || isset($_SESSION['source_browser']))
 		{
@@ -92,7 +113,11 @@
 <?
 		}
 ?>
+		<? if( $contesting == 0 ) {?>
 			<td><?=$res->code_length?> B</td>
+		<?} else {?>
+			<td>---- B</tb>
+		<?}?>
 			<td><?=$res->in_date?></td>
 		</tr>
 <?
