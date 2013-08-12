@@ -15,7 +15,7 @@ $cid=$_POST['cid'];
 $pid=$_POST['pid'];
 
 if( isset($cid) ) {
-        $sql="SELECT `start_time`, `end_time` from `contest` where `contest_id`=$cid";
+        $sql="SELECT `start_time`, `end_time` from `contest` where `contest_id`='$cid'";
         $res=mysql_query($sql);
         if (mysql_num_rows($res)==1){
                 $row=mysql_fetch_row($res);

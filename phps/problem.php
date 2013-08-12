@@ -12,7 +12,7 @@
  	$cid=$_GET['cid'];
  	$pid=$_GET['pid'];
 	if( isset($cid) && isset($pid) ) {
-		$sql = "select problem_id  from contest_problem where contest_id=$cid AND num=$pid";
+		$sql = "select problem_id  from contest_problem where contest_id=$cid AND num='$pid'";
 		$tmp = @mysql_query($sql);
 		$res = @mysql_fetch_row($tmp);
 		$pn = $res[0];
@@ -23,8 +23,6 @@
 	$res=@mysql_fetch_row($tmp);
 	$avail=$res[0];
 	if( $avail < 1 ) exit("<span>No Such Problem!</span>");
-
-	if( $pn > 3000 ) exit("<span>No Such Problem!</span>");
 
 
 	$sql="select * from `problem` where `problem_id`='$pn'";

@@ -15,7 +15,7 @@ if (isset($_POST['syear']))
         $title=$_POST['title'];
         $private=$_POST['private'];
         $contest_mode=$_POST['contest_mod'];
-        if (get_magic_quotes_gpc ()){
+        if ( true ){
                 $title = stripslashes ($title);
                 $private = stripslashes ($private);
                 $contest_mode = stripslashes ($contest_mode);
