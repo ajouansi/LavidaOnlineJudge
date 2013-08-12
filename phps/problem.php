@@ -8,21 +8,28 @@
 	{	
 		$issolve[$res->problem_id]=true;
 	}
-
-	$pn=$_GET['pn'];
+	
+ 	$cid=$_GET['cid'];
+ 	$pid=$_GET['pid'];
+	if( isset($cid) && isset($pid) ) {
+		$sql = "select problem_id  from contest_problem where contest_id=$cid AND num='$pid'";
+		$tmp = @mysql_query($sql);
+		$res = @mysql_fetch_row($tmp);
+		$pn = $res[0];
+	}
+	else $pn=$_GET['pn'];
 	$sql="select count(*) from `problem` where `problem_id`='$pn' and `defunct`='N'";
 	$tmp=@mysql_query($sql);
 	$res=@mysql_fetch_row($tmp);
 	$avail=$res[0];
 	if( $avail < 1 ) exit("<span>No Such Problem!</span>");
 
-	if( $pn > 2079 ) exit("<span>No Such Problem!</span>");
-
 
 	$sql="select * from `problem` where `problem_id`='$pn'";
 	$tmp=@mysql_query($sql);
 	$res=@mysql_fetch_object($tmp);
 ?>
+<? if( !isset($cid) ) { ?>
 <div class="row-fluid">
 	<div class="span10">
 		<div class="tabable">
@@ -31,7 +38,16 @@
 				<li class="active"><a><?=$pn?></a></li>
 				<li><a href="/hof/<?=$pn?>">Hall of fame</a></li>
 				<li><a href="/status/<?=$pn?>">Status</a></li>
-<?
+<? } else { ?>
+<div class="row-fluid">
+	<div class="span10">
+		<div class="tabable">
+			<ul class="nav nav-tabs">
+				<li><a href="/contest/<?=$cid?>">Problemset</a></li>
+				<li class="active"><a><?=$pn?></a></li>
+				<li><a href="/contestrank/<?=$cid?>">Standing</a></li>
+				<li><a href="/conteststatus/<?=$cid?>">Status</a></li>
+<? 	}
 	if( isset($_SESSION['user_id']) )
 	{
 ?>
@@ -170,7 +186,7 @@ $(document).ready(function(){
 	$("#submitFinal").click(function(){
 		if(runid==0){
 			$.ajax({
-				data:"secretCode="+$('#secretCode').val()+"&id="+$('#problemID').val()+"&language="+$('#language').val()+"&source="+encodeURIComponent(editor.getValue()),
+				data:"secretCode="+$('#secretCode').val()+"&id="+$('#problemID').val()+"&language="+$('#language').val()+"&source="+encodeURIComponent(editor.getValue())<? if( isset($cid) && isset($pid) ) { echo "+\"&pid=$pid&cid=$cid\""; }?>,
 				dataType:'html',
 				type:'POST',
 				url:'/submit.php',
