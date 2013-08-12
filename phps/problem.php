@@ -75,7 +75,7 @@
 		</div>
 		<h1><?=$res->title?></h1>
 		<hr/>
-		<?//=($res->spj==1)?infoBox('<b>Notice!</b> Submissions on this problem will be special judged'):""?>
+		<?=($res->spj==1)?infoBox('<b>Notice!</b> Submissions on this problem will be special judged'):""?>
 		<h5>Description</h5>
 		<p><?=$res->description?></p>
 		<hr/>
