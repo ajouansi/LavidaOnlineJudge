@@ -34,9 +34,8 @@
             }
         }
         if (!$contest_ok){
-            $msg=  "<h2>Not invited or not login!</h2>";
-            require("error.php");
-            exit(0);
+            $msg=  "<h2>Not invited or Not login!</h2>";
+            errorPage($msg);
         }
 	$sql="select * from (SELECT `problem`.`title` as `title`,`problem`.`problem_id` as `pid`,source as source
             FROM `contest_problem`,`problem`
