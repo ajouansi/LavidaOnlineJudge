@@ -16,7 +16,7 @@ RewriteRule ^settings/([a-zA-Z0-9_-]+)$ /index.php?mode=settings&page=$1 [L]
 RewriteRule ^collection/([0-9]+)$ /index.php?mode=collection&col_id=$1 [L]
 RewriteRule ^collections/([a-zA-Z0-9_-]+)$ /index.php?mode=collections&show=$1 [L]
 RewriteRule ^contest/([0-9]+)$ /index.php?mode=contest&col_id=$1 [L]
-RewriteRule ^problem/([0-9]+)&([0-9])$ /index.php?mode=problem&cid=$1&pid=$2 [L]
+RewriteRule ^problem/([0-9]+)&([0-9]+)$ /index.php?mode=problem&cid=$1&pid=$2 [L]
 RewriteRule ^contestrank/([0-9]+)$ /index.php?mode=contestrank&cid=$1 [L]
 RewriteRule ^conteststatus/([0-9]+)$ /index.php?mode=conteststatus&cid=$1 [L]
 php_value auto_prepend_file /home/judge/www/magic.php
