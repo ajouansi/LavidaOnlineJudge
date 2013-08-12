@@ -72,7 +72,7 @@
 		if(!isset($bottom)) $bottom=$res->solution_id;
 		$contesting = 0;
 		if( isset($res->contest_id) ) {
-			$sql="SELECT `end_time` from `contest` where `contest_id`=$res->contest_id";
+			$sql="SELECT `end_time` from `contest` where `contest_id`='$res->contest_id'";
         	$ret=mysql_query($sql);
         	if (mysql_num_rows($ret)==1){
                 $row=mysql_fetch_row($ret);
