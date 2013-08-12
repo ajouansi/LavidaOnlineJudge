@@ -11,6 +11,24 @@ if (isset($_POST['id'])) $id=intval($_POST['id']);
 else exit("-1");
 if( sha1('lavida_secret:::'.$id) != $_POST['secretCode'] ) exit("-1");
 
+$cid=$_POST['cid'];
+$pid=$_POST['pid'];
+
+if( isset($cid) ) {
+        $sql="SELECT `start_time`, `end_time` from `contest` where `contest_id`='$cid'";
+        $res=mysql_query($sql);
+        if (mysql_num_rows($res)==1){
+                $row=mysql_fetch_row($res);
+                $start=strtotime($row[0]);
+                $end=strtotime($row[1]);
+                $cur=time();
+		if( $cur < $start ||  $end <= $cur ){
+                        $pid = NULL;
+			$cid = NULL;
+        	}
+        }
+}
+
 $source=$_POST['source'];
 $source=stripslashes($source);
 $source=mysql_real_escape_string($source);
