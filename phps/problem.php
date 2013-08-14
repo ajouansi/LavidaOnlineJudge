@@ -22,7 +22,7 @@
 	$tmp=@mysql_query($sql);
 	$res=@mysql_fetch_row($tmp);
 	$avail=$res[0];
-	if( $avail < 1 ) exit("<span>No Such Problem!</span>");
+	if( $avail < 1 ) { echo("<span>No Such Problem!</span>"); return; }
 
 
 	$sql="select * from `problem` where `problem_id`='$pn'";
