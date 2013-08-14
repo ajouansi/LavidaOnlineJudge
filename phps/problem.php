@@ -88,6 +88,11 @@
 		<pre><?=$res->sample_input?></pre>
 		<h5>Sample Output</h5>
 		<pre><?=$res->sample_output?></pre>
+		<?if(empty($res->hint) == false){?>
+          <h5>Hint</h5>
+          <pre><?=$res->hint?></pre>
+        <?}?>
+
 	</div>
 	<div class="span2">
 		<div>
