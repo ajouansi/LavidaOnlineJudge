@@ -74,6 +74,7 @@
 			</ul>
 		</div>
 		<h1><?=$res->title?></h1>
+		<?if(empty($res->source) == false) echo "<span class=\"label label-info\">Source : ".$res->source."</span>";?>
 		<hr/>
 		<?=($res->spj==1)?infoBox('<b>Notice!</b> Submissions on this problem will be special judged'):""?>
 		<h5>Description</h5>
