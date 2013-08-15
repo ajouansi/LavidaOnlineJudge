@@ -19,14 +19,22 @@
 	while($row=mysql_fetch_array($result))
 	{
 		$solved[$row[0]]=true;
-		$total++;
 	}
 
-	while(1)
-	{
-		$rp = rand(1001,$maxpid);
-		if( $solved[$rp] == true ) continue;
-		echo "<script>location.href='/problem/".$rp."'</script>";
-		break;
-	}
+	$notSolvedProblems=Array();
+        for($i=1001;$i<=$maxpid;$i++)
+        {
+                if($solved[$i] == false) array_push($notSolvedProblems, $i);
+        }
+
+        $countNotSolvedProblems = count($notSolvedProblems);
+        if($countNotSolvedProblems > 0)
+        {
+                echo "<script>location.href='/problem/".$notSolvedProblems[rand(0, count($notSolvedProblems)-1)]."'</script>";
+        }
+        else
+        {
+                echo "You solved all problems!!!";
+                #echo "<script>location.href='/problem/".rand(1001, $maxpid)."'</script>";
+        }
 ?>

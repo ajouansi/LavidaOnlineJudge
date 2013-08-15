@@ -100,7 +100,7 @@
 	<h2>Dual System</h2>
 	<form action="/dual/">
 		<input type="text" name="user1"> VS <input type="text" name="user2"><br>
-		<input type="submit" value="GO">
+		<input type="submit" class="btn" value="GO">
 	</form>
 </center>
 <?
