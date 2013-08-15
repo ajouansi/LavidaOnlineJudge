@@ -22,7 +22,7 @@
 	$tmp=@mysql_query($sql);
 	$res=@mysql_fetch_row($tmp);
 	$avail=$res[0];
-	if( $avail < 1 ) exit("<span>No Such Problem!</span>");
+	if( $avail < 1 ) { echo("<span>No Such Problem!</span>"); return; }
 
 
 	$sql="select * from `problem` where `problem_id`='$pn'";
@@ -74,6 +74,7 @@
 			</ul>
 		</div>
 		<h1><?=$res->title?></h1>
+		<?if(empty($res->source) == false) echo "<span class=\"label label-info\">Source : ".$res->source."</span>";?>
 		<hr/>
 		<?=($res->spj==1)?infoBox('<b>Notice!</b> Submissions on this problem will be special judged'):""?>
 		<h5>Description</h5>
@@ -88,6 +89,11 @@
 		<pre><?=$res->sample_input?></pre>
 		<h5>Sample Output</h5>
 		<pre><?=$res->sample_output?></pre>
+		<?if(empty($res->hint) == false){?>
+          <h5>Hint</h5>
+          <pre><?=$res->hint?></pre>
+        <?}?>
+
 	</div>
 	<div class="span2">
 		<div>
