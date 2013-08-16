@@ -6,7 +6,7 @@
 	<a href="http://judge.lavida.us/profile/flrngel">flrngel</a><br/>
 	<a href="http://judge.lavida.us/profile/hanaya1">hanaya1</a><br/>
 	<a href="http://judge.lavida.us/profile/layg">layg</a><br/>
-	<a href="http://judge.lavida.us/profile/libe">libe</a><br/>
+	<a href="http://judge.lavida.us/profile/mastojun">mastojun</a><br/>
 	<a href="http://judge.lavida.us/profile/ywwoo">ywwoo</a><br/>
 </div>
 </center>
