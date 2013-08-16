@@ -30,7 +30,7 @@ if( isset($cid) ) {
 }
 
 $source=$_POST['source'];
-$source=stripslashes($source);
+//$source=stripslashes($source);
 $source=mysql_real_escape_string($source);
 //$source=trim($source);
 $len=strlen($source);
