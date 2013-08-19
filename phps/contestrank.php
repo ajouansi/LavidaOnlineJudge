@@ -3,10 +3,7 @@
 if(defined('__FROM_INDEX__')==false) exit;
 $OJ_CACHE_SHARE=true;
 $cache_time=10;
-//require_once('./include/cache_start.php');
 require_once('./include/db_info.inc.php');
-//require_once('./include/setlang.php');
-//$view_title= $MSG_CONTEST.$MSG_RANKLIST;
 $title="";
 require_once("./include/const.inc.php");
 require_once("./include/my_func.inc.php");
@@ -253,6 +250,18 @@ sorter:'punish'
 </div>
 <?php
 $rank=1;
+$sql = "SELECT `contest_mode`, `end_time` FROM `contest` WHERE `contest_id`=$cid";
+$ret = mysql_query($sql);
+$hidden = 0;
+if( mysql_num_rows($ret) == 1 ) {
+	$row = mysql_fetch_row($ret);
+	$hidden = $row[0];
+	$endtime=strtotime($row[1]);
+	$cur=time();
+	if( $cur > $endtime ) {
+		$hidden = 0;
+	}
+}
 ?>
 <center>
 <h3>Contest RankList -- <?php echo $title?></h3>
@@ -263,6 +272,7 @@ for ($i=0;$i<$pid_cnt;$i++)
 echo "<th><a href=/problem/$cid&$i>$PID[$i]</a>";
 echo "</tr></thead>\n<tbody>";
 for ($i=0;$i<$user_cnt;$i++){
+	if( (int)$hidden == 1  && $_SESSION['user_id'] != $U[$i]->user_id ) continue; 
 	if ($i&1) echo "<tr class=oddrow align=center>\n";
 	else echo "<tr class=evenrow align=center>\n";
 	echo "<td>";

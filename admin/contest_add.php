@@ -14,7 +14,7 @@ if (isset($_POST['syear']))
 
         $title=$_POST['title'];
         $private=$_POST['private'];
-        $contest_mode=$_POST['contest_mod'];
+        $contest_mode=$_POST['contest_mode'];
         if ( true ){
                 $title = stripslashes ($title);
                 $private = stripslashes ($private);
@@ -70,7 +70,6 @@ if (isset($_POST['syear']))
         //echo "<script>window.location.href=\"contest_list.php\";</script>";
 }
 else{
-        
    if(isset($_GET['cid'])){
                    $cid=intval($_GET['cid']);
                    $sql="select * from contest WHERE `contest_id`='$cid'";
@@ -132,7 +131,7 @@ else if(isset($_POST['problem2contest'])){
         Hour:<input class=input-mini  type=text name=ehour size=2 value=<?php echo (date('H')+4)%24?>>&nbsp;
         Minute:<input class=input-mini  type=text name=eminute value=00 size=2 ></p>
         Public:<select name=private><option value=0>Public</option><option value=1>Private</option></select>
-        Mode:<select name="contest_mode"><option value=0>Unofficial</option><option value=1>Official</select>
+        Mode:<select name="contest_mode"><option value=0>Open</option><option value=1>Hidden</select>
 	<br/>
 	Language:<select name="lang[]" multiple="multiple"    style="height:220px">
         <?php
@@ -153,8 +152,6 @@ $lang_count=count($language_name);
         <?php //require_once("../include/set_post_key.php");?>
         <br>Problems:<input class=input-xxlarge type=text size=60 name=cproblem value="<?php echo isset($plist)?$plist:""?>">
         <br>
-        <p align=left>Description:<br><!--<textarea rows=13 name=description cols=80></textarea>-->
-
         Users:<textarea name="ulist" rows="20" cols="20"></textarea>
         <br />
         <p><input type=submit value=Submit name=submit><input type=reset value=Reset name=reset></p>
