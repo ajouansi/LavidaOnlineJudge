@@ -79,6 +79,7 @@
 		<?if(empty($res->source) == false) echo "<span class=\"label label-info\">Source : ".$res->source."</span>";?>
 		<hr/>
 		<?=($res->spj==1)?infoBox('<b>Notice!</b> Submissions on this problem will be special judged'):""?>
+		<?=($res->defunct == 'Y')?errorBox('<b>Notice!</b> This Problem is not available'):""?>
 		<h5>Description</h5>
 		<p><?=$res->description?></p>
 		<hr/>
