@@ -129,7 +129,7 @@
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><?=$_SESSION['user_id']?><b class="caret"></b></a>
 								<ul class="dropdown-menu">
 <?
-	if(isset($_SESSION['administrator']))
+	if(isset($_SESSION['administrator']) || isset($_SESSION['problem_editor']))
 	{
 ?>
 									<li><a href="/admin/">Admin</a></li>
