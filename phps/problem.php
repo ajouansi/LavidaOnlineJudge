@@ -18,7 +18,9 @@
 		$pn = $res[0];
 	}
 	else $pn=$_GET['pn'];
-	$sql="select count(*) from `problem` where `problem_id`='$pn' and `defunct`='N'";
+	$cond = "where `problem_id`='$pn'";
+	if(!isset($_SESSION['administrator'])) $cond .= " and `defunct`='N'";
+	$sql="select count(*) from `problem` $cond";
 	$tmp=@mysql_query($sql);
 	$res=@mysql_fetch_row($tmp);
 	$avail=$res[0];
@@ -122,9 +124,11 @@
 					<td style="width:50%"><b>Ratio</b></td>
 					<td style="text-align:center"><?=round(doubleval($res->accepted/$res->submit)*100,2)?>%</td>
 				</tr>
+				<? if($res->defunct == 'N') { ?>
 				<tr>
 					<td colspan="2" style="text-align:center"><button type="button" data-toggle="modal" id="submitButton" class="btn btn-small btn-primary">Submit <?=$res->problem_id?></button></td>
 				</tr>
+				<?}?>
 			</tbody>
 		</table>
 		</div>
