@@ -21,20 +21,27 @@
 		$solved[$row[0]]=true;
 	}
 
-	$notSolvedProblems=Array();
-        for($i=1001;$i<=$maxpid;$i++)
-        {
-                if($solved[$i] == false) array_push($notSolvedProblems, $i);
-        }
+	$sql="select `problem_id` from `problem` where `defunct` = 'Y'";
+	$result=@mysql_query($sql) or die(mysql_error());
+	while($row=mysql_fetch_array($result))
+	{
+		$solved[$row[0]]=true;
+	}
 
-        $countNotSolvedProblems = count($notSolvedProblems);
-        if($countNotSolvedProblems > 0)
-        {
-                echo "<script>location.href='/problem/".$notSolvedProblems[rand(0, count($notSolvedProblems)-1)]."'</script>";
-        }
-        else
-        {
-                echo "You solved all problems!!!";
-                #echo "<script>location.href='/problem/".rand(1001, $maxpid)."'</script>";
-        }
+	$notSolvedProblems=Array();
+    for($i=1001;$i<=$maxpid;$i++)
+    {
+            if($solved[$i] == false) array_push($notSolvedProblems, $i);
+    }
+
+    $countNotSolvedProblems = count($notSolvedProblems);
+    if($countNotSolvedProblems > 0)
+    {
+        echo "<script>location.href='/problem/".$notSolvedProblems[rand(0, count($notSolvedProblems)-1)]."'</script>";
+    }
+    else
+    {
+        echo "You solved all problems!!!";
+        #echo "<script>location.href='/problem/".rand(1001, $maxpid)."'</script>";
+    }
 ?>
