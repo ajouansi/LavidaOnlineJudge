@@ -9,6 +9,9 @@
 	$sql="select `source` from source_code where `solution_id`='$rid'";
 	$tmp=@mysql_query($sql);
 	$res2=@mysql_fetch_object($tmp);
+	$sql="select `error` from compileinfo where `solution_id`='$rid'";
+	$tmp=@mysql_query($sql);
+	$compileInfoRes=@mysql_fetch_object($tmp);
 ?>
 <link href='/highlight/styles/shCore.css' rel='stylesheet' type='text/css'/> 
 <link href='/highlight/styles/shThemeDefault.css' rel='stylesheet' type='text/css'/> 
@@ -47,5 +50,11 @@
 		</tr>
 	</tbody>
 </table>
+<? if(empty($compileInfoRes) == false){?>
+<hr/>
+<pre class="brush:plain/text">
+<?=$compileInfoRes->error?>
+</pre>
+<?}?>
 <hr/>
 <pre class="brush:<?=strtolower($language_name[$res->language])?>"><?=htmlspecialchars(str_replace("\n\r","\n",$res2->source))?></pre>
