@@ -66,6 +66,11 @@ function infoBox($msg){
 	return;
 }
 
+function errorBox($msg){
+	echo "<div class=\"alert alert-error\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\">x</button>$msg</div>";
+	return;
+}
+
 function movePage($page){
 	echo "<script>location.href='$page';</script>";
 	return;
