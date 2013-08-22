@@ -6,14 +6,24 @@ if(!empty($_GET['last']))$last=intval($_GET['last']);
 
 $s_cid=$_GET['cid'];
 if( !isset($s_cid) ) {
-	$msg = "no search contest!";
-	require("error.php");
-	exit(0);
+		$msg = "no search contest!";
+			require("error.php");
+			exit(0);
 }
 $s_res=$_GET['jresult'];
 $s_pid=$_GET['problem_id'];
-$s_user=$_SESSION['user_id'];
 $s_pflag=$_GET['pflag'];
+$contesting = 0;
+if( isset($_SESSION['administrator']) == false ) {
+	$sql="SELECT `end_time`, `contest_mode` from `contest` where `contest_id`=$s_cid";
+	$ret=mysql_query($sql);
+	if(mysql_num_rows($ret)==1){
+	  $row=mysql_fetch_row($ret);
+		$end=strtotime($row[0]);
+		$cur=time();
+		if( $cur <= $end && $row[1] == 1 )$contesting = 1;
+	}
+}
 ?>
 <div class="row-fluid">
 <div class="span10">
@@ -38,7 +48,7 @@ $s_pflag=$_GET['pflag'];
 $opval=array('4','6','7','5','8','9','10','11','0','1','2','3');
 for($i=0;$i<12;$i++)
 {
-	?>
+		?>
 		<option value="<?=$opval[$i]?>"<?=($_GET[jresult]==$opval[$i])?' selected':''?>><?=$judge_result[$opval[$i]]?></option>
 		<?
 }
@@ -65,14 +75,18 @@ for($i=0;$i<12;$i++)
 <?
 if( empty($_GET['jresult']) ) $s_res='%';
 if( empty($_GET['problem_id']) ) $s_pid='%';
-if( empty($_SESSION['user_id']) ) $s_user='%';
+$s_user='%';
+if( $contesting == 1 ) {
+	$s_user=$_SESSION['user_id'];
+	if( !isset($s_user) ) $s_user="sexyguy";
+}
 $sql="SELECT * FROM `solution` where `contest_id`=$s_cid and `result` like '$s_res' and `user_id` like '$s_user' and `problem_id` like '$s_pid' order by `solution_id` DESC limit $last,20";
 if($_GET['test']==1)echo$sql;
 $tmp=@mysql_query($sql);
 while($res=@mysql_fetch_object($tmp))
 {
-	if(!isset($bottom)) $bottom=$res->solution_id;
-	?>
+		if(!isset($bottom)) $bottom=$res->solution_id;
+			?>
 		<tr>
 		<td><?=$res->solution_id?></td>
 		<td><a href="/profile/<?=$res->user_id?>"><?=$res->user_id?></a></td>
