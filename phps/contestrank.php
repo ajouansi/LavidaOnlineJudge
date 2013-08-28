@@ -258,7 +258,7 @@ if( mysql_num_rows($ret) == 1 ) {
 	$hidden = $row[0];
 	$endtime=strtotime($row[1]);
 	$cur=time();
-	if( $cur > $endtime ) {
+	if( $cur > $endtime || isset($_SESSION['administrator']) == true ) {
 		$hidden = 0;
 	}
 }
