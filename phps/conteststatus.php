@@ -15,7 +15,7 @@ $s_pid=$_GET['problem_id'];
 $s_pflag=$_GET['pflag'];
 $contesting = 0;
 if( isset($_SESSION['administrator']) == false ) {
-	$sql="SELECT `end_time`, `contest_mode` from `contest` where `contest_id`=$s_cid";
+	$sql="SELECT `end_time`, `contest_mode` from `contest` where `contest_id`='$s_cid'";
 	$ret=mysql_query($sql);
 	if(mysql_num_rows($ret)==1){
 	  $row=mysql_fetch_row($ret);

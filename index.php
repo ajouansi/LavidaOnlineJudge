@@ -193,7 +193,7 @@ if( strlen($msg) > 4 )
 				</div>
 				<div class="row-fluid" style="margin-top:10px">
 					<center>
-						<p><a href="/contributers">&copy;</a> lavida.us 2008-2013 <a href="mailto:flrngel@gmail.com">Hwe-chul Cho</a>, <a href="mailto:libe.ajou.ac.kr">Hyun-hwan Jeong</a></p>
+						<p><a href="/contributers">&copy;</a> lavida.us 2008-2013 <a href="mailto:flrngel@gmail.com">Hwe-chul Cho</a>, <a href="mailto:libe@ajou.ac.kr">Hyun-hwan Jeong</a></p>
 					</center>
 				</div>
 			<!--/footer-->
