@@ -8,4 +8,5 @@
 	}
 	$_GET=array_map_r("addslashes",$_GET);
 	$_POST=array_map_r("addslashes",$_POST);
+	$_REQUEST=array_map_r("addslashes",$_REQUEST);
 ?>
