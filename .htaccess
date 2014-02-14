@@ -19,6 +19,8 @@ RewriteRule ^contest/([0-9]+)$ /index.php?mode=contest&col_id=$1 [L]
 RewriteRule ^problem/([0-9]+)&([0-9]+)$ /index.php?mode=problem&cid=$1&pid=$2 [L]
 RewriteRule ^contestrank/([0-9]+)$ /index.php?mode=contestrank&cid=$1 [L]
 RewriteRule ^conteststatus/([0-9]+)$ /index.php?mode=conteststatus&cid=$1 [L]
+RewriteRule ^faq /index.php?mode=faq
+
 php_value auto_prepend_file /home/judge/www/magic.php
 
 <Files schema.sql>
