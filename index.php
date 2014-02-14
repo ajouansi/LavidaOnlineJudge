@@ -33,6 +33,7 @@
 		else if($_GET['mode']=='contest'){$now_page.="contest.php"; $active_menu[4]="active";}
 		else if($_GET['mode']=='contestrank'){$now_page.="contestrank.php"; $active_menu[4]="active";}
 		else if($_GET['mode']=='conteststatus'){$now_page.="conteststatus.php"; $active_menu[4]="active";}
+		else if($_GET['mode']=='faq'){$now_page.="faq.php";}
 	}
 	else
 		$now_page.="main.php";
@@ -114,6 +115,7 @@
 									<li><a href="/random">Random Problem</a></li>
 									<li><a>Documents</a></li>
 									<li><a>Links</a></li>
+									<li><a href="/faq"> FAQ </a></li>
 									<li class="divider"></li>
 									<li><a>Hall of Shame</a></li>
 								</ul>
