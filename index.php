@@ -109,13 +109,13 @@
 							<li class="<?=$active_menu[3];?>"><a href="/collections">Collections</a></li>
 							<li class="<?=$active_menu[4];?>"><a href="/contests">Contests</a></li>
 							<li class="<?=$active_menu[5];?>"><a href="/hof">Hall of fame</a></li>
+							<li><a href="/faq"> FAQ </a></li>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools<b class="caret"></b></a>
 								<ul class="dropdown-menu">
 									<li><a href="/random">Random Problem</a></li>
 									<li><a>Documents</a></li>
 									<li><a>Links</a></li>
-									<li><a href="/faq"> FAQ </a></li>
 									<li class="divider"></li>
 									<li><a>Hall of Shame</a></li>
 								</ul>
