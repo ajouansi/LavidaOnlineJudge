@@ -1,6 +1,7 @@
 AddDefaultCharset UTF-8
 RewriteEngine On
 RewriteCond %{REQUEST_URI}	!^/$
+RewriteRule ^api /phps/api.php
 RewriteRule ^(admin)($|/) - [L]
 RewriteRule ^([a-zA-Z_-]+)$ /index.php?mode=$1 [QSA,L]
 RewriteRule ^([a-zA-Z_-]+)/$ /index.php?mode=$1	[QSA,L]
