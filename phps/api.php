@@ -18,16 +18,16 @@
     return $res[0];
   }
 
-  function get_solved_problems($user_id) {
-    $sql="select problem_id from solution where user_id='$user_id' and result='4'";
+  function get_submit_problems($user_id) {
+    $sql="select problem_id, result from solution where user_id='$user_id'";
     $tmp=@mysql_query($sql);
 
     $submit_problems=array();
     while( $res=@mysql_fetch_row($tmp) ) {
-      $submit_problems[$res[0]] = 1;
+      $submit_problems[$res[0]] = $res[1];
     }
 
-    return array_keys($submit_problems);
+    return $submit_problems;
   }
   $key=$_GET['key'];
 
@@ -49,7 +49,7 @@
       echo json_encode($json);
 
     }
-    else if ($task=='solved_problems') {
+    else if ($task=='submit_problems') {
       $user_id=$_GET['user_id'];
 
       if( check_user_id($user_id) == 0 ) { //no user
@@ -57,7 +57,7 @@
         exit;
       }
 
-      $submit_problems=get_solved_problems($user_id);
+      $submit_problems=get_submit_problems($user_id);
 
       echo json_encode( array( 'submit_problems' => $submit_problems ) );
     }
