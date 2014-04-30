@@ -5,7 +5,7 @@ RewriteRule ^api /phps/api.php
 RewriteRule ^(admin)($|/) - [L]
 RewriteRule ^([a-zA-Z_-]+)$ /index.php?mode=$1 [QSA,L]
 RewriteRule ^([a-zA-Z_-]+)/$ /index.php?mode=$1	[QSA,L]
-RewriteRule ^profile/([a-zA-Z0-9_-]+)$ /index.php?mode=profile&user=$1 [L]
+RewriteRule ^profile/(.*) /index.php?mode=profile&user=$1 [L]
 RewriteRule ^problem/([0-9]+)$	/index.php?mode=problem&pn=$1 [L]
 RewriteRule ^problemset/([0-9]+)$ /index.php?mode=problemset&page=$1 [QSA,L]
 RewriteRule ^source/([0-9]+)$ /index.php?mode=source&rid=$1 [L]
