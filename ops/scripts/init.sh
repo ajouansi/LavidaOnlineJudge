@@ -13,7 +13,7 @@ mkdir ~/package
 mkdir ~/package/apache2
 
 # install components
-sudo apt-get install -y git lxc curl libcurl3 libcurl3-dev wget unzip tree rdate build-essential
+sudo apt-get install -y git lxc curl libcurl3 libcurl3-dev wget unzip tree rdate build-essential rdate
 
 # time setting
 sudo rdate -s time.bora.net
@@ -24,12 +24,12 @@ sudo rdate -s time.bora.net
 # install apache
 
 ## apr
-wget -quiet http://apache.tt.co.kr//apr/apr-1.5.1.tar.gz -O ~/setup/src/apr-1.5.1.tar.gz
+wget -quiet http://apache.mirror.cdnetworks.com//apr/apr-1.5.1.tar.gz -O ~/setup/src/apr-1.5.1.tar.gz
 cd ~/setup/src/
 tar xvzf apr-1.5.1.tar.gz
 
 ## apr-util
-wget -quiet http://apache.tt.co.kr//apr/apr-util-1.5.3.tar.gz -O ~/setup/src/apr-util-1.5.3.tar.gz
+wget -quiet http://apache.mirror.cdnetworks.com//apr/apr-util-1.5.3.tar.gz -O ~/setup/src/apr-util-1.5.3.tar.gz
 cd ~/setup/src/
 tar xvzf apr-util-1.5.3.tar.gz
 
@@ -67,6 +67,7 @@ sudo cp ~/package/apache2/bin/apachectl /etc/init.d/apache2
 
 
 
+exit
 # install mysql
 wget -quiet http://ftp.yz.yamagata-u.ac.jp/pub/dbms/mariadb/mariadb-10.0.11/source/mariadb-10.0.11.tar.gz -O ~/setup/src/mariadb-10.0.11.tar.gz
 cd ~/setup/src
