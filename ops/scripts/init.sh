@@ -22,7 +22,7 @@ mkdir $INSTALL_PATH/packages
 mkdir $INSTALL_PATH/packages/apache2
 
 # install components
-sudo apt-get install -y git lxc curl unzip tree rdate build-essential cmake auto-apt libncurses5-dev
+sudo apt-get install -y git lxc curl unzip tree rdate build-essential cmake auto-apt libncurses5-dev zlib1g-dev
 
 # time setting
 sudo rdate -s time.bora.net
@@ -109,10 +109,10 @@ sudo bash -c "echo \"/usr/local/mariadb/lib\" > /etc/ld.so.conf.d/mysql.conf"
 
 ### add mysql user, group
 sudo groupadd -g 27 -o -r mysql
-useradd -M -g mysql -o -r -d $INSTALL_PATH/data/mariadb/data -s /bin/false -c “MariaDB” -u 27 mysql
+useradd -M -g mysql -o -r -d $INSTALL_PATH/data/mariadb/data -s /bin/false -c "MariaDB" -u 27 mysql
 
 ### add to service daemon
-sudo cp $INSTALL_PATH/packages/mariadb/share/mysql.server /etc/init.d/mysqld
+sudo cp $INSTALL_PATH/packages/mariadb/support-files/mysql.server /etc/init.d/mysqld
 sudo update-rc.d mysqld defaults
 
 
