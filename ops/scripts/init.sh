@@ -22,7 +22,7 @@ mkdir $INSTALL_PATH/packages
 mkdir $INSTALL_PATH/packages/apache2
 
 # install components
-sudo apt-get install -y git lxc curl unzip tree rdate build-essential cmake auto-apt
+sudo apt-get install -y git lxc curl unzip tree rdate build-essential cmake auto-apt libncurses5-dev
 
 # time setting
 sudo rdate -s time.bora.net
@@ -60,7 +60,7 @@ tar xvzf apache-2.4.9.tar.gz
 cd httpd-2.4.9
 mv $INSTALL_PATH/setup/src/apr-1.5.1 ./srclib/apr
 mv $INSTALL_PATH/setup/src/apr-util-1.5.3 ./srclib/apr-util
-auto-apt run ./configure --prefix=$INSTALL_PATH/packages/apache2 --with-included-apr
+auto-apt -y run ./configure --prefix=$INSTALL_PATH/packages/apache2 --with-included-apr
 make && make install
 
 # clone lavida
@@ -68,7 +68,7 @@ git clone https://github.com/flrngel/LavidaOnlineJudge $INSTALL_PATH/web
 
 ## apache2 config
 sudo rm -rf $INSTALL_PATH/packages/apache2/htdocs
-sudo ln -s $INSTALL_PATH/web $INSTALL_DIR/packages/apache2/htdocs
+sudo ln -s $INSTALL_PATH/web $INSTALL_PATH/packages/apache2/htdocs
 
 ### add to service daemon
 sudo cp $INSTALL_PATH/packages/apache2/bin/apachectl /etc/init.d/apache2
