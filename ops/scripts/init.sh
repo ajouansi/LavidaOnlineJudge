@@ -22,7 +22,7 @@ mkdir $INSTALL_PATH/packages
 mkdir $INSTALL_PATH/packages/apache2
 
 # install components
-sudo apt-get install -y git lxc curl unzip tree rdate build-essential cmake auto-apt libncurses5-dev zlib1g-dev
+sudo apt-get install -y git lxc curl unzip tree rdate build-essential cmake auto-apt libncurses5-dev
 
 # time setting
 sudo rdate -s time.bora.net
