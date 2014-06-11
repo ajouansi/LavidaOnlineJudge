@@ -2,7 +2,7 @@
 ### comment : 소스설치가 안정적이고 좋음
 
 # need argument $1 (INSTALL_PATH)
-if [!$1]; then
+if [[ -z "$1" ]]; then
 	echo "NO INSTALL_PATH SPECIFIED"
 	exit
 fi
@@ -22,7 +22,7 @@ mkdir $INSTALL_PATH/packages
 mkdir $INSTALL_PATH/packages/apache2
 
 # install components
-sudo apt-get install -y git lxc curl unzip tree rdate build-essential cmake auto-apt libncurses5-dev
+sudo apt-get install -y git lxc curl unzip tree rdate build-essential cmake auto-apt libncurses5-dev libaio-dev lib64z1-dev
 
 # time setting
 sudo rdate -s time.bora.net
@@ -87,20 +87,20 @@ cmake .. \
 -DWITH_READLINE=1 \
 -DWITH_SSL=bundled \
 -DWITH_ZLIB=system \
--DBUILD_CONFIG=mysql_release \
+#-DBUILD_CONFIG=mysql_release \
 -DDEFAULT_CHARSET=utf8 \
 -DDEFAULT_COLLATION=utf8_general_ci \
 -DDEFAULT_ENGINE=INNOBASE \
 -DENABLED_LOCAL_INFILE=1 \
 -DWITH_EXTRA_CHARSETS=all \
-#-DWITH_ARIA_STORAGE_ENGINE=1 \
-#-DWITH_XTRADB_STORAGE_ENGINE=1 \
-#-DWITH_ARCHIVE_STORAGE_ENGINE=1 \
+-DWITH_ARIA_STORAGE_ENGINE=0 \
+-DWITH_XTRADB_STORAGE_ENGINE=0 \
+-DWITH_ARCHIVE_STORAGE_ENGINE=0 \
 -DWITH_INNOBASE_STORAGE_ENGINE=1 \
-#-DWITH_PARTITION_STORAGE_ENGINE=1 \
-#-DWITH_BLACKHOLE_STORAGE_ENGINE=1 \
-#-DWITH_FEDERATEDX_STORAGE_ENGINE=1 \
-#-DWITH_PERFSCHEMA_STORAGE_ENGINE=1 \
+-DWITH_PARTITION_STORAGE_ENGINE=0 \
+-DWITH_BLACKHOLE_STORAGE_ENGINE=0 \
+-DWITH_FEDERATEDX_STORAGE_ENGINE=0 \
+-DWITH_PERFSCHEMA_STORAGE_ENGINE=0 \
 -DCMAKE_INSTALL_PREFIX=$INSTALL_PATH/packages/mariadb \
 -DMYSQL_DATADIR=$INSTALL_PATH/data/mariadb/data
 make && make install

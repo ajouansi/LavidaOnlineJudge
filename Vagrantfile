@@ -27,24 +27,24 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 		shell.args=[INSTALL_PATH]
 	end
 
-	# cook
-	config.vm.provision "chef_solo" do |chef|
-		chef.cookbooks_path=["ops/cookbooks"]
-		
-		#chef.add_recipe "apt"
-		chef.add_recipe "apache2"
-		chef.add_recipe "mariadb"
-
-		chef.json={
-#			"apache" => {
-#				"dir" => INSTALL_PATH+"/packages/apache2",
-#				"log_dir" => INSTALL_PATH+"/logs"
-#			},
-			"mariadb"=> {
-				"server_root_password" => "vagrant"
-			}
-		}
-	end
+#	# cook
+#	config.vm.provision "chef_solo" do |chef|
+#		chef.cookbooks_path=["ops/cookbooks"]
+#		
+#		#chef.add_recipe "apt"
+#		chef.add_recipe "apache2"
+#		chef.add_recipe "mariadb"
+#
+#		chef.json={
+##			"apache" => {
+##				"dir" => INSTALL_PATH+"/packages/apache2",
+##				"log_dir" => INSTALL_PATH+"/logs"
+##			},
+#			"mariadb"=> {
+#				"server_root_password" => "vagrant"
+#			}
+#		}
+#	end
 
 	# port forwarding
 	config.vm.network "forwarded_port", guest:80, host:8080
