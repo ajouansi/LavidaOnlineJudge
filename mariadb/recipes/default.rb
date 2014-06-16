@@ -7,7 +7,7 @@
 # All rights reserved - Do Not Redistribute
 #
 
-remote_file "#{node['loj']['path']}/setup/src/mariadb-#{node['mariadb']['version']}}.tar.gz" do
+remote_file "#{node['loj']['path']}/setup/src/mariadb-#{node['mariadb']['version']}.tar.gz" do
 	source "http://ftp.yz.yamagata-u.ac.jp/pub/dbms/mariadb/mariadb-#{node['mariadb']['version']}/source/mariadb-#{node['mariadb']['version']}.tar.gz"
 end
 
@@ -41,7 +41,7 @@ bash "mariradb_install" do
 		-DMYSQL_DATADIR=$INSTALL_PATH/data/mariadb/data
 		make && make install
 
-		sudo ln -s #{node['loj']['path']}/packages/mariadb/lib #{node['loj']['path']}/packages/mariadb/lib64
+		ln -s #{node['loj']['path']}/packages/mariadb/lib #{node['loj']['path']}/packages/mariadb/lib64
 		sudo bash -c "echo \"#{node['loj']['path']}/packages/mariadb/lib\" > /etc/ld.so.conf.d/mysql.conf"
 
 		sudo groupadd -g 27 -o -r mysql

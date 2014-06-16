@@ -49,7 +49,9 @@ bash "httpd_install" do
 
 		git clone https://github.com/flrngel/LavidaOnlineJudge #{node['loj']['path']}/web
 
-		sudo rm -rf #{node['loj']['path']}/packages/apache2/htdocs
-		sudo ln -s #{node['loj']['path']}/web #{node['loj']['path']}/packages/apache2/htdocs
+		rm -rf #{node['loj']['path']}/packages/apache2/htdocs
+		ln -s #{node['loj']['path']}/web #{node['loj']['path']}/packages/apache2/htdocs
+
+		sudo cp -rf #{node['loj']['path']}/packages/apache/bin/apachectl /etc/init.d/apache2
 	EOH
 end
