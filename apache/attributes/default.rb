@@ -1,4 +1,4 @@
-# vesrions
+# versions
 
 default['apache']['pcre']['version']="8.35"
 default['apache']['apr']['version']="1.5.1"
