@@ -41,8 +41,13 @@ bash "httpd_install" do
 	cwd "#{node['loj']['path']}/setup/src"
 	code <<-EOH
 		tar xvzf httpd-#{node['apache']['httpd']['version']}.tar.gz
+		
 		tar xvzf apr-#{node['apache']['apr']['version']}.tar.gz -C httpd-#{node['apache']['httpd']['version']}/srclib
-		tar xvzf apr-util-#{node['apache']['apr-util']['version']}.tar.gz -C httpd-#{node['apache']['httpd']['version']}/srclib
+		mv apr-#{node['apache']['apr']['version']} httpd-#{node['apache']['httpd']['version']}/srclib/apr
+
+		tar xvzf apr-util-#{node['apache']['apr-util']['version']}.tar.gz
+		mv apr-util-#{node['apache']['apr-util']['version']} httpd-#{node['apache']['httpd']['version']}/srclib/apr-util
+
 		cd httpd-#{node['apache']['httpd']['version']}
 		sudo auto-apt -y run ./configure --prefix=#{node['loj']['path']} --with-included-apr
 		make && make install
