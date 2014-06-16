@@ -52,6 +52,6 @@ bash "httpd_install" do
 		rm -rf #{node['loj']['path']}/packages/apache2/htdocs
 		ln -s #{node['loj']['path']}/web #{node['loj']['path']}/packages/apache2/htdocs
 
-		sudo cp -rf #{node['loj']['path']}/packages/apache/bin/apachectl /etc/init.d/apache2
+		sudo cp -rf #{node['loj']['path']}/packages/apache2/bin/apachectl /etc/init.d/apache2
 	EOH
 end
