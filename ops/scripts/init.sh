@@ -10,6 +10,8 @@ fi
 # settings
 
 INSTALL_PATH=$1
+USER=$2
+USER_GROUP=$3
 
 mkdir $INSTALL_PATH
 
@@ -23,6 +25,8 @@ mkdir $INSTALL_PATH/packages
 mkdir $INSTALL_PATH/packages/apache2
 mkdir $INSTALL_PATH/packages/mariadb
 mkdir $INSTALL_PATH/packages/php
+
+chown -R $USER:$USER_GROUP $INSTALL_PATH
 
 # install components
 

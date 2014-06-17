@@ -12,7 +12,8 @@ fi
 INSTALL_PATH=$1
 
 # add to $PATH
-echo "PATH=\$PATH:$INSTALL_PATH/packages/apache2/bin" >> ~/.bashrc
-echo "PATH=\$PATH:$INSTALL_PATH/packages/mariadb/bin" >> ~/.bashrc
-echo "PATH=\$PATH:$INSTALL_PATH/packages/php/bin" >> ~/.bashrc
-. ~/.bashrc
+echo "PATH=\$PATH:$INSTALL_PATH/packages/apache2/bin" >> .bashrc
+echo "PATH=\$PATH:$INSTALL_PATH/packages/mariadb/bin" >> .bashrc
+echo "PATH=\$PATH:$INSTALL_PATH/packages/php/bin" >> .bashrc
+
+source .bashrc

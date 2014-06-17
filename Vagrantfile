@@ -7,11 +7,21 @@ VAGRANTFILE_API_VERSION = "2"
 # Configure Variables
 INSTALL_PATH="/lavida"
 
+USER="vagrant"
+USER_GROUP="vagrant"
+PASSWORD="vagrant"
+
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	config.vm.box = "ubuntu/trusty64"
 
-	config.ssh.username = "vagrant"
-	config.ssh.password = "vagrant"
+	config.ssh.username = USER
+	config.ssh.password = PASSWORD
+
+	# set limit
+	config.vm.provider "virtualbox" do |v|
+		v.memory = 2048
+	#	v.cpus = 2
+	end
 
 	config.vm.define :LOJ3_VM do |vm|
 	end
@@ -27,25 +37,22 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	# initialize script
 	config.vm.provision "shell" do |shell|
 		shell.path="ops/scripts/init.sh"
-		shell.args=[INSTALL_PATH]
+		shell.args=[INSTALL_PATH,USER,USER_GROUP]
 	end
 
-	# apache
-	config.vm.provision "shell" do |shell|
-		shell.path="ops/scripts/apache.sh"
-		shell.args=[INSTALL_PATH]
-	end
+	# chef_solo
+	config.vm.provision "chef_solo" do |chef|
+		chef.add_recipe "apache"
+		chef.add_recipe "mariadb"
+		chef.add_recipe "php"
+		chef.cookbooks_path="ops/cookbooks"
 
-	# mariadb
-	config.vm.provision "shell" do |shell|
-		shell.path="ops/scripts/mariadb.sh"
-		shell.args=[INSTALL_PATH]
-	end
-
-	# php
-	config.vm.provision "shell" do |shell|
-		shell.path="ops/scripts/php.sh"
-		shell.args=[INSTALL_PATH]
+		chef.json={
+			"loj" => {
+				"path" => INSTALL_PATH,
+				"user" => USER
+			}
+		}
 	end
 
 	# after apm
@@ -53,13 +60,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 		shell.path="ops/scripts/after_apm.sh"
 		shell.args=[INSTALL_PATH]
 	end
-
-	# chown
-	config.vm.provision "shell", inline: "chown %{user}:%{group} %{INSTALL_PATH}" % {
-		:user => config.ssh.username,
-		:group => config.ssh.username,
-		:INSTALL_PATH => INSTALL_PATH
-	}
 
 	# daemon up
 	config.vm.provision "shell" do |shell|

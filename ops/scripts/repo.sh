@@ -11,4 +11,4 @@ sudo bash -c "echo '$REPO' > /etc/apt/sources.list"
 
 sudo apt-get check
 sudo apt-get update
-sudo apt-get upgrade
+sudo apt-get -y upgrade
