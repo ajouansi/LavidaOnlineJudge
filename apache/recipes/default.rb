@@ -42,7 +42,7 @@ bash "httpd_install" do
 	code <<-EOH
 		tar xvzf httpd-#{node['apache']['httpd']['version']}.tar.gz
 		
-		tar xvzf apr-#{node['apache']['apr']['version']}.tar.gz -C httpd-#{node['apache']['httpd']['version']}/srclib
+		tar xvzf apr-#{node['apache']['apr']['version']}.tar.gz
 		mv apr-#{node['apache']['apr']['version']} httpd-#{node['apache']['httpd']['version']}/srclib/apr
 
 		tar xvzf apr-util-#{node['apache']['apr-util']['version']}.tar.gz
