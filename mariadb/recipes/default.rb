@@ -53,5 +53,7 @@ bash "mariradb_install" do
 		sudo update-rc.d mysqld defaults
 
 		sudo ln -s /etc/my.cnf #{node['loj']['path']}/config/my.cnf
+		
+		echo "PATH=\$PATH:#{node['loj']['path']}/packages/mariadb/bin" >> ~/.bashrc
 	EOH
 end

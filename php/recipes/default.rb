@@ -21,5 +21,7 @@ bash "php_install" do
 		sudo auto-apt -y run ./configure --prefix=#{node['loj']['path']}/packages/php --with-apxs2=#{node['loj']['path']}/packages/apache2/bin/apxs --with-mysqli=#{node['loj']['path']}/packages/mariadb/bin/mysql_config --with-config-file-path=#{node['loj']['path']}/packages/apache2/conf --enable-exif --enable-mbstring
 		make && make install
 		sudo ln -s #{node['loj']['path']}/packages/apache2/conf/php.ini #{node['loj']['path']}/config/php.ini
+
+		echo "PATH=\$PATH:#{node['loj']['path']}/packages/php/bin" >> ~/.bashrc
 	EOH
 end
