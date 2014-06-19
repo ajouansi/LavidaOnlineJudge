@@ -40,6 +40,8 @@ bash "httpd_install" do
 	user "#{node['loj']['user']}"
 	cwd "#{node['loj']['path']}/setup/src"
 	code <<-EOH
+		mkdir #{node['loj']['path']}/packages/apache2
+
 		tar xvzf httpd-#{node['apache']['httpd']['version']}.tar.gz
 		
 		tar xvzf apr-#{node['apache']['apr']['version']}.tar.gz

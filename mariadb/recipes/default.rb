@@ -15,6 +15,8 @@ bash "mariradb_install" do
 	user "#{node['loj']['user']}"
 	cwd "#{node['loj']['path']}/setup/src"
 	code <<-EOH
+		mkdir #{node['loj']['path']}/packages/mariadb
+
 		tar xvzf mariadb-#{node['mariadb']['version']}.tar.gz
 		cd mariadb-#{node['mariadb']['version']}
 		mkdir build
@@ -37,8 +39,8 @@ bash "mariradb_install" do
 		-DWITH_BLACKHOLE_STORAGE_ENGINE=0 \
 		-DWITH_FEDERATEDX_STORAGE_ENGINE=0 \
 		-DWITH_PERFSCHEMA_STORAGE_ENGINE=1 \
-		-DCMAKE_INSTALL_PREFIX=$INSTALL_PATH/packages/mariadb \
-		-DMYSQL_DATADIR=$INSTALL_PATH/data/mariadb/data
+		-DCMAKE_INSTALL_PREFIX=#{node['loj']['path']}/packages/mariadb \
+		-DMYSQL_DATADIR=#{node['loj']['path']}/data/mariadb/data
 		make && make install
 
 		ln -s #{node['loj']['path']}/packages/mariadb/lib #{node['loj']['path']}/packages/mariadb/lib64

@@ -14,6 +14,8 @@ bash "php_install" do
 	user "#{node['loj']['user']}"
 	cwd "#{node['loj']['path']}/setup/src"
 	code <<-EOH
+		mkdir #{node['loj']['path']}/packages/php
+
 		tar xvzf php-#{node['php']['version']}.tar.gz
 		cd php-#{node['php']['version']}
 		sudo auto-apt -y run ./configure --prefix=#{node['loj']['path']}/packages/php --with-apxs2=#{node['loj']['path']}/packages/apache2/bin/apxs --with-mysqli=#{node['loj']['path']}/packages/mariadb/bin/mysql_config --with-config-file-path=#{node['loj']['path']}/packages/apache2/conf --enable-exif --enable-mbstring
