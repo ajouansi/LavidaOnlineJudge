@@ -52,7 +52,7 @@ bash "mariradb_install" do
 		sudo cp #{node['loj']['path']}/packages/mariadb/support-files/mysql.server /etc/init.d/mysqld
 		sudo update-rc.d mysqld defaults
 
-		sudo cp #{node['loj]['path']}/packages/mariadb/support-files/my-small.cnf /etc/my.cnf
+		sudo cp #{node['loj']['path']}/packages/mariadb/support-files/my-small.cnf /etc/my.cnf
 		sudo ln -s /etc/my.cnf #{node['loj']['path']}/config/my.cnf
 		
 		echo "PATH=\$PATH:#{node['loj']['path']}/packages/mariadb/bin" >> ~#{node['loj']['user']}/.bashrc
