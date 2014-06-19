@@ -22,6 +22,6 @@ bash "php_install" do
 		make && make install
 		sudo ln -s #{node['loj']['path']}/packages/apache2/conf/php.ini #{node['loj']['path']}/config/php.ini
 
-		echo "PATH=\$PATH:#{node['loj']['path']}/packages/php/bin" >> ~/.bashrc
+		echo "PATH=\$PATH:#{node['loj']['path']}/packages/php/bin" >> ~#{node['loj']['user']}/.bashrc
 	EOH
 end
