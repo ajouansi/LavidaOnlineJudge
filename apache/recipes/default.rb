@@ -61,6 +61,6 @@ bash "httpd_install" do
 
 		sudo cp -rf #{node['loj']['path']}/packages/apache2/bin/apachectl /etc/init.d/apache2
 
-		echo "PATH=\$PATH:#{node['loj']['path']}/packages/apache2/bin" >> ~#{node['loj']['path']}/.bashrc
+		echo "PATH=\$PATH:#{node['loj']['path']}/packages/apache2/bin" >> ~#{node['loj']['user']}/.bashrc
 	EOH
 end
