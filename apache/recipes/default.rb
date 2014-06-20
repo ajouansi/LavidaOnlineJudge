@@ -20,6 +20,7 @@ bash "pcre_install" do
 		cd pcre-#{node['apache']['pcre']['version']}/
 		./configure
 		make && sudo make install
+		sudo ldconfig
 	EOH
 end
 

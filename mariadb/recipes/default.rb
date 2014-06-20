@@ -47,7 +47,7 @@ bash "mariradb_install" do
 		sudo bash -c "echo \"#{node['loj']['path']}/packages/mariadb/lib\" > /etc/ld.so.conf.d/mysql.conf"
 
 		sudo groupadd -g 27 -o -r mysql
-		useradd -M -g mysql -o -r -d #{node['loj']['path']}/data/mariadb/data -s /bin/false -c "MariaDB" -u 27 mysql
+		sudo useradd -M -g mysql -o -r -d #{node['loj']['path']}/data/mariadb/data -s /bin/false -c "MariaDB" -u 27 mysql
 
 		sudo cp #{node['loj']['path']}/packages/mariadb/support-files/mysql.server /etc/init.d/mysqld
 		sudo update-rc.d mysqld defaults
