@@ -59,7 +59,7 @@ bash "mariradb_install" do
 		sudo ln -s /etc/my.cnf #{node['loj']['path']}/config/my.cnf
 
 		cd #{node['loj']['path']}/packages/mariadb/
-		sudo scripts/mysql_install_db --base-dir=#{node['loj']['path']}/packages/mariadb --data-dir=#{node['loj']['path']}/data/mariadb
+		sudo scripts/mysql_install_db --basedir=#{node['loj']['path']}/packages/mariadb --datadir=#{node['loj']['path']}/data/mariadb
 		
 		echo \"PATH=$PATH:#{node['loj']['path']}/packages/mariadb/bin\" >> ~#{node['loj']['user']}/.bashrc
 	EOH
