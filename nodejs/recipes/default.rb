@@ -21,6 +21,6 @@ bash "nodejs_install" do
 		sudo auto-apt -y run ./configure --prefix=#{node['loj']['path']}/packages/node
 		make && make install
 		
-		echo "PATH=\$PATH:#{node['loj']['path']}/packages/node/bin" >> ~#{node['loj']['user']}/.bashrc
+		echo \"PATH=$PATH:#{node['loj']['path']}/packages/node/bin\" >> ~#{node['loj']['user']}/.bashrc
 	EOH
 end
