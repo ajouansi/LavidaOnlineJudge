@@ -50,8 +50,6 @@ bash "mariradb_install" do
 		sudo groupadd -g 27 -o -r mysql
 		sudo useradd -M -g mysql -o -r -d #{node['loj']['path']}/data/mariadb/data -s /bin/false -c "MariaDB" -u 27 mysql
 		
-		sudo chown -R mysql:mysql #{node['loj']['path']}/data/mariadb
-
 		sudo cp #{node['loj']['path']}/packages/mariadb/support-files/mysql.server /etc/init.d/mysqld
 		sudo update-rc.d mysqld defaults
 
@@ -60,6 +58,8 @@ bash "mariradb_install" do
 
 		cd #{node['loj']['path']}/packages/mariadb/
 		sudo scripts/mysql_install_db --basedir=#{node['loj']['path']}/packages/mariadb --datadir=#{node['loj']['path']}/data/mariadb
+		
+		sudo chown -R mysql:mysql #{node['loj']['path']}/data/mariadb
 		
 		echo \"PATH=$PATH:#{node['loj']['path']}/packages/mariadb/bin\" >> ~#{node['loj']['user']}/.bashrc
 	EOH
