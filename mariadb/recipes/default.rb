@@ -33,12 +33,12 @@ bash "mariradb_install" do
 		-DENABLED_LOCAL_INFILE=1 \
 		-DWITH_EXTRA_CHARSETS=all \
 		-DWITH_ARIA_STORAGE_ENGINE=1 \
-		-DWITH_XTRADB_STORAGE_ENGINE=0 \
-		-DWITH_ARCHIVE_STORAGE_ENGINE=0 \
+		-DWITH_XTRADB_STORAGE_ENGINE=1 \
+		-DWITH_ARCHIVE_STORAGE_ENGINE=1 \
 		-DWITH_INNOBASE_STORAGE_ENGINE=1 \
-		-DWITH_PARTITION_STORAGE_ENGINE=0 \
-		-DWITH_BLACKHOLE_STORAGE_ENGINE=0 \
-		-DWITH_FEDERATEDX_STORAGE_ENGINE=0 \
+		-DWITH_PARTITION_STORAGE_ENGINE=1 \
+		-DWITH_BLACKHOLE_STORAGE_ENGINE=1 \
+		-DWITH_FEDERATEDX_STORAGE_ENGINE=1 \
 		-DWITH_PERFSCHEMA_STORAGE_ENGINE=1 \
 		-DCMAKE_INSTALL_PREFIX=#{node['loj']['path']}/packages/mariadb \
 		-DMYSQL_DATADIR=#{node['loj']['path']}/data/mariadb
@@ -49,6 +49,8 @@ bash "mariradb_install" do
 
 		sudo groupadd -g 27 -o -r mysql
 		sudo useradd -M -g mysql -o -r -d #{node['loj']['path']}/data/mariadb/data -s /bin/false -c "MariaDB" -u 27 mysql
+		
+		sudo chown -R mysql:mysql #{node['loj']['path']}/data/mariadb
 
 		sudo cp #{node['loj']['path']}/packages/mariadb/support-files/mysql.server /etc/init.d/mysqld
 		sudo update-rc.d mysqld defaults
