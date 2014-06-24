@@ -55,7 +55,7 @@ bash "httpd_install" do
 		sudo auto-apt -y run ./configure --prefix=#{node['loj']['path']}/packages/apache2 --with-included-apr
 		make && make install
 
-		git clone https://github.com/flrngel/LavidaOnlineJudge #{node['loj']['path']}/web
+		git clone -b v3_web https://github.com/flrngel/LavidaOnlineJudge #{node['loj']['path']}/web
 
 		rm -rf #{node['loj']['path']}/packages/apache2/htdocs
 		ln -s #{node['loj']['path']}/web #{node['loj']['path']}/packages/apache2/htdocs
