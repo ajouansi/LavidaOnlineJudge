@@ -1,4 +1,4 @@
-ServerRoot "<%=node['loj']['path']%>/packages/apache2"
+ServerRoot <%=node['loj']['path']%>/packages/apache2
 
 Listen 80
 
@@ -38,9 +38,9 @@ ServerAdmin <%=node['loj']['admin_email]%>
 	Require all denied
 </Directory>
 
-DocumentRoot "<%=node['loj']['path']%>/packages/apache2/htdocs"
+DocumentRoot <%=node['loj']['path']%>/packages/apache2/htdocs>
 
-<Directory "<%=node['loj']['path']%>/packages/apache2/htdocs">
+<Directory <%=node['loj']['path']%>/packages/apache2/htdocs>
 	Options Indexes FollowSymLinks
 	AllowOverride None
 	Require all granted
@@ -70,10 +70,10 @@ LogLevel warn
 </IfModule>
 
 <IfModule alias_module>
-	ScriptAlias /cgi-bin/ "<%=node['loj']['path']%>/packages/apache2/cgi-bin/"
+	ScriptAlias /cgi-bin/ <%=node['loj']['path']%>/packages/apache2/cgi-bin/
 </IfModule>
 
-<Directory "<%=node['loj']['path']%>/packages/apache2/cgi-bin">
+<Directory <%=node['loj']['path']%>/packages/apache2/cgi-bin>
 	AllowOverride None
 	Options None
 	Require all granted
