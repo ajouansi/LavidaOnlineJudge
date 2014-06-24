@@ -17,6 +17,7 @@ bash "mariradb_install" do
 	code <<-EOH
 		mkdir #{node['loj']['path']}/packages/mariadb
 		mkdir #{node['loj']['path']}/data/mariadb
+		mkdir #{node['loj']['path']}/data/mariadb/data
 
 		tar xvzf mariadb-#{node['mariadb']['version']}.tar.gz
 		cd mariadb-#{node['mariadb']['version']}
@@ -41,7 +42,7 @@ bash "mariradb_install" do
 		-DWITH_FEDERATEDX_STORAGE_ENGINE=1 \
 		-DWITH_PERFSCHEMA_STORAGE_ENGINE=1 \
 		-DCMAKE_INSTALL_PREFIX=#{node['loj']['path']}/packages/mariadb \
-		-DMYSQL_DATADIR=#{node['loj']['path']}/data/mariadb
+		-DMYSQL_DATADIR=#{node['loj']['path']}/data/mariadb/data
 		make && make install
 
 		ln -s #{node['loj']['path']}/packages/mariadb/lib #{node['loj']['path']}/packages/mariadb/lib64
@@ -57,10 +58,16 @@ bash "mariradb_install" do
 		sudo ln -s /etc/my.cnf #{node['loj']['path']}/config/my.cnf
 
 		cd #{node['loj']['path']}/packages/mariadb/
-		sudo scripts/mysql_install_db --basedir=#{node['loj']['path']}/packages/mariadb --datadir=#{node['loj']['path']}/data/mariadb
+		sudo scripts/mysql_install_db --basedir=#{node['loj']['path']}/packages/mariadb --datadir=#{node['loj']['path']}/data/mariadb/data
 		
 		sudo chown -R mysql:mysql #{node['loj']['path']}/data/mariadb
 		
 		echo \"PATH=$PATH:#{node['loj']['path']}/packages/mariadb/bin\" >> ~#{node['loj']['user']}/.bashrc
 	EOH
+end
+
+template "/etc/my.cnf" do
+	source "my.cnf.erb"
+	mode "0700"
+	owner "#{node['loj']['user']}"
 end

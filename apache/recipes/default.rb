@@ -65,3 +65,9 @@ bash "httpd_install" do
 		echo \"PATH=$PATH:#{node['loj']['path']}/packages/apache2/bin\" >> ~#{node['loj']['user']}/.bashrc
 	EOH
 end
+
+template "#{node['loj']['path']}/packages/apache2/conf/httpd.conf" do
+	source "httpd.conf.erb"
+	mode "0700"
+	owner "#{node['loj']['user']}"
+end
