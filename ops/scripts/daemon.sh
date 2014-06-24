@@ -4,5 +4,5 @@ if [[ -z $1 ]]; then
 fi
 
 # daemon start
-sudo /etc/init.d/mysqld $1
-sudo /etc/init.d/apache2 $1
+sudo service mysqld $1
+sudo service apache2 $1

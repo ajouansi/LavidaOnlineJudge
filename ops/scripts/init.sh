@@ -22,9 +22,6 @@ mkdir $INSTALL_PATH/setup/src
 
 mkdir $INSTALL_PATH/config
 mkdir $INSTALL_PATH/packages
-mkdir $INSTALL_PATH/packages/apache2
-mkdir $INSTALL_PATH/packages/mariadb
-mkdir $INSTALL_PATH/packages/php
 
 chown -R $USER:$USER_GROUP $INSTALL_PATH
 

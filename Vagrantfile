@@ -11,6 +11,8 @@ USER="vagrant"
 USER_GROUP="vagrant"
 PASSWORD="vagrant"
 
+ADMIN_EMAIL="no-reply@example.com"
+
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	config.vm.box = "ubuntu/trusty64"
 
@@ -50,15 +52,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 		chef.json={
 			"loj" => {
 				"path" => INSTALL_PATH,
-				"user" => USER
+				"user" => USER,
+				"admin_email" => ADMIN_EMAIL
 			}
 		}
-	end
-
-	# after apm
-	config.vm.provision "shell" do |shell|
-		shell.path="ops/scripts/after_apm.sh"
-		shell.args=[INSTALL_PATH]
 	end
 
 	# daemon up
