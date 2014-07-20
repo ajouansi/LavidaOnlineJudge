@@ -18,7 +18,7 @@ bash "php_install" do
 
 		tar xvzf php-#{node['php']['version']}.tar.gz
 		cd php-#{node['php']['version']}
-		./configure --prefix=#{node['loj']['path']}/packages/php --with-apxs2=#{node['loj']['path']}/packages/apache2/bin/apxs --with-mysqli=#{node['loj']['path']}/packages/mariadb/bin/mysql_config --with-config-file-path=#{node['loj']['path']}/packages/apache2/conf --enable-mbstring
+		./configure --prefix=#{node['loj']['path']}/packages/php --exec-prefix=/usr/local --with-apxs2=#{node['loj']['path']}/packages/apache2/bin/apxs --with-mysqli=#{node['loj']['path']}/packages/mariadb/bin/mysql_config --with-config-file-path=#{node['loj']['path']}/packages/apache2/conf --enable-mbstring
 		make && make install
 		sudo ln -s #{node['loj']['path']}/packages/apache2/conf/php.ini #{node['loj']['path']}/config/php.ini
 
