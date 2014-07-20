@@ -42,7 +42,7 @@ bash "mariradb_install" do
 		-DWITH_FEDERATEDX_STORAGE_ENGINE=1 \
 		-DWITH_PERFSCHEMA_STORAGE_ENGINE=1 \
 		-DCMAKE_INSTALL_PREFIX=#{node['loj']['path']}/packages/mariadb \
-		-DCMAKE_RUNTIME_OUTPUT_DIRECTORY=/usr/local/bin
+		-DCMAKE_RUNTIME_OUTPUT_DIRECTORY=/usr/local/bin \
 		-DMYSQL_DATADIR=#{node['loj']['path']}/data/mariadb/data
 		make && make install
 
