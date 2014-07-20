@@ -52,7 +52,7 @@ bash "httpd_install" do
 		mv apr-util-#{node['apache']['apr-util']['version']} httpd-#{node['apache']['httpd']['version']}/srclib/apr-util
 
 		cd httpd-#{node['apache']['httpd']['version']}
-		sudo auto-apt -y run ./configure --prefix=#{node['loj']['path']}/packages/apache2 --with-included-apr
+		sudo auto-apt -y run ./configure --prefix=#{node['loj']['path']}/packages/apache2 --exec-prefix=/usr/local --with-included-apr
 		make && make install
 
 		git clone -b v3_web https://github.com/flrngel/LavidaOnlineJudge #{node['loj']['path']}/web
