@@ -62,8 +62,6 @@ bash "mariradb_install" do
 		sudo scripts/mysql_install_db --basedir=#{node['loj']['path']}/packages/mariadb --datadir=#{node['loj']['path']}/data/mariadb/data
 		
 		sudo chown -R mysql:mysql #{node['loj']['path']}/data/mariadb
-		
-		echo \"PATH=$PATH:#{node['loj']['path']}/packages/mariadb/bin\" >> ~#{node['loj']['user']}/.bashrc
 	EOH
 end
 
